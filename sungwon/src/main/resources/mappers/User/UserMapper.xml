@@ -3,8 +3,8 @@
 
 <mapper namespace="com.sungwon.app.mapper.UserMapper">
     <insert id="insertUser">
-        INSERT INTO users (userid, password)
-        VALUES (#{userid}, #{password})
+        INSERT INTO users (userid, password, enabled)
+        VALUES (#{userid}, #{password}, #{enabled})
     </insert>
 
     <select id="findUserById" resultType="com.sungwon.app.dto.UserDTO">

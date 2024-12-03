@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class RolesDTO {
+    private String id;
     private String userid;
-    private String password;
-    private boolean enabled;
+    private String role;
 }
-

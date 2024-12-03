@@ -17,10 +17,12 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UserDTO user) {
-        log.info("Received UserDTO: {}", user.getUserid()); // 로그 출력
-        log.info("Received UserDTO: {}", user.getPassword()); // 로그 출력
-        userService.insertUser(user);
-        return ResponseEntity.ok("User registered successfully");
+        try {
+            userService.insertUser(user); // 서비스 계층에서 모든 비즈니스 로직 처리
+            return ResponseEntity.ok("User registered successfully");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/login")
